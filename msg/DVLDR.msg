@@ -1,25 +1,27 @@
 #Header
 std_msgs/Header header
 
-#Time
+# Water Linked position_local / serial wrp timestamp [s]
 float64 time
 
-#Measured position [m]
+# DVL internal dead-reckoning position [m]
+# Axes follow the Water Linked vehicle frame at DR reset:
+# x forward, y right/starboard, z down.
 geometry_msgs/Vector3 position
 
-#Estimated position
+# Position standard deviation / FOM [m]
 float64 pos_std
 
-#IMU sensor
+# DVL internal DR orientation [deg]: roll about x, pitch about y, yaw about z.
 float64 roll
 float64 pitch
 float64 yaw
 
-#Message type
+# Message type, expected "position_local" for TCP JSON DR.
 string type
 
-#Status message
+# Status: 0 means no issue in the Water Linked protocol.
 int64 status
 
-#Formatting of json
+# Formatting/protocol version, e.g. "json_v3.3".
 string format
